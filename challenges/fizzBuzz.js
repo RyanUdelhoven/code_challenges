@@ -6,7 +6,7 @@ const randomNumber = (location) => {
   return output;
 };
 
-let randomArray = () => {
+const randomArray = () => {
   let output = [];
   const number = randomNumber('randomArray')
   for (i = 1; i < number; i++) {

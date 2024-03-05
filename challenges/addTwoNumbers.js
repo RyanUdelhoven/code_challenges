@@ -3,11 +3,11 @@
 // ['6', '5', '4'] = 456
 // 432 + 456 = 888
 
-let randomInteger = () => {
+const randomInteger = () => {
   return Math.floor(Math.random() * 10);
 };
 
-let randomArray = () => {
+const randomArray = () => {
   let length = Math.floor(Math.random() * 10) + 1;
   let output = [];
   for (i = 0; i < length; i++) {
@@ -17,7 +17,7 @@ let randomArray = () => {
   return output;
 };
 
-let addTwoNumbers = (l1, l2) => {
+const addTwoNumbers = (l1, l2) => {
   return parseInt(l1.reverse().join('')) + parseInt(l2.reverse().join(''));
 };
 

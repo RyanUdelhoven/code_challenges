@@ -2,7 +2,7 @@
 // When stacked, the arrays will make a square.
 // [[1, 2, 3], [4, 5, 6], [9, 8, 9]]
 
-function diagonalDifference(input) {
+const diagonalDifference = (input) => {
   let varArr = [0, 0];
   for (i = 0; i < input.length; i++) {
     varArr[0] += input[i][i];
@@ -14,7 +14,7 @@ function diagonalDifference(input) {
 console.log(diagonalDifference(randomArray()));
 
 // Random Array Generator
-function randomArray() {
+const randomArray = () => {
   let output = [];
   for (i = 0; i < 3; i++) {
     let tempArr = [];

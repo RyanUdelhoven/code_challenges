@@ -5,7 +5,7 @@
 const targetNumber = 9;
 const numberArray = [1, 2, 4, 7, 11, 14];
 
-function addTwo(target, array) {
+const addTwo = (target, array) => {
   for (number of array) {
     const complimentIndex = array.indexOf(target - number);
     if (complimentIndex !== -1) return [array.indexOf(number), complimentIndex];
