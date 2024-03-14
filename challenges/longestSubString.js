@@ -12,27 +12,22 @@ const randomString = () => {
   return result;
 };
 
-const example = 'example';
 const random = randomString();
 console.log(random);
 
 const longestSubString = (input) => {
   input = input.split('');
-  let accumulatorMap = new Map();
+  let accumulatorArray = [];
   let stringsMap = new Map();
 
   for (i in input) {
-    if (accumulatorMap.has(input[i])) {
-      let temp = [];
-      accumulatorMap.forEach((value, key) => temp.push(key));
-      accumulatorMap.clear();
-      accumulatorMap.set(input[i], i);
-      stringsMap.set(temp.join(), temp.length);
-    } else {
-      accumulatorMap.set(input[i], i);
+    if (accumulatorArray.includes(input[i])) {
+      stringsMap.set(accumulatorArray, accumulatorArray.length);
+      accumulatorArray = [];
     }
+    accumulatorArray.push(input[i]);
   }
-  console.log(stringsMap);
+  stringsMap.set(accumulatorArray, accumulatorArray.length); // Catches final letter series
 
   let highCount = 0;
   stringsMap.forEach((value) => (highCount < value ? (highCount = value) : null));
@@ -44,4 +39,3 @@ const longestSubString = (input) => {
 };
 
 console.log(longestSubString(random));
-console.log(longestSubString('ajoyabgzqa'));
