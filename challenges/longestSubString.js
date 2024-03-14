@@ -5,7 +5,7 @@
 const randomString = () => {
   let result = '';
   let characters = 'abcdefghijklmnopqrstuvwxyz';
-  let stringLength = Math.floor(Math.random() * 100) + 10;
+  let stringLength = Math.ceil(Math.random() * 10) + 26; // +26 w/ .ceil guarantees a duplicate.
   for (let i = 0; i < stringLength; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
@@ -18,18 +18,30 @@ console.log(random);
 
 const longestSubString = (input) => {
   input = input.split('');
-  let map = new Map();
-  let output = [];
+  let accumulatorMap = new Map();
+  let stringsMap = new Map();
 
   for (i in input) {
-    if (map.has(input[i])) {
-      map.forEach((value, key) => output.push(key));
-      return output.join('');
+    if (accumulatorMap.has(input[i])) {
+      let temp = [];
+      accumulatorMap.forEach((value, key) => temp.push(key));
+      accumulatorMap.clear();
+      accumulatorMap.set(input[i], i);
+      stringsMap.set(temp.join(), temp.length);
+    } else {
+      accumulatorMap.set(input[i], i);
     }
-    map.set(input[i], i);
   }
+  console.log(stringsMap);
 
-  return output;
+  let highCount = 0;
+  stringsMap.forEach((value) => (highCount < value ? (highCount = value) : null));
+  for (const [key, value] of stringsMap) {
+    if (value == highCount) {
+      return [key, value];
+    }
+  }
 };
 
 console.log(longestSubString(random));
+console.log(longestSubString('ajoyabgzqa'));
