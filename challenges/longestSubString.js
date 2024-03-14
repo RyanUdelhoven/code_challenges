@@ -18,7 +18,7 @@ console.log(random);
 const longestSubString = (input) => {
   let accumulatorArray = [];
   let stringsMap = new Map();
-  
+
   input = input.split('').forEach((letter) => {
     if (accumulatorArray.includes(letter)) {
       stringsMap.set(accumulatorArray, accumulatorArray.length);
@@ -32,7 +32,7 @@ const longestSubString = (input) => {
   stringsMap.forEach((value) => (highCount < value ? (highCount = value) : null));
   for (const [key, value] of stringsMap) {
     if (value == highCount) {
-      return [key, value];
+      return [key.join(''), value];
     }
   }
 };
