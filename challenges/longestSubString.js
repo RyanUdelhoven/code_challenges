@@ -16,17 +16,16 @@ const random = randomString();
 console.log(random);
 
 const longestSubString = (input) => {
-  input = input.split('');
   let accumulatorArray = [];
   let stringsMap = new Map();
-
-  for (i in input) {
-    if (accumulatorArray.includes(input[i])) {
+  
+  input = input.split('').forEach((letter) => {
+    if (accumulatorArray.includes(letter)) {
       stringsMap.set(accumulatorArray, accumulatorArray.length);
       accumulatorArray = [];
     }
-    accumulatorArray.push(input[i]);
-  }
+    accumulatorArray.push(letter);
+  })
   stringsMap.set(accumulatorArray, accumulatorArray.length); // Catches final letter series
 
   let highCount = 0;
